@@ -103,29 +103,41 @@ bool ListaEnlazadaSimple::listaVacia(){
 //Calculo de O(n)
 void ListaEnlazadaSimple::clonarLista(ListaEnlazadaSimple *listaVacia){
     Nodo *aux = this->cabeza; //constante 1
-    if(aux==NULL){  // ?
+    if(aux==NULL){  // constante 1
         cout<<"Lista vacia!"; //constante 1
-        return; // ?
+        return;
     }
     while(aux!=NULL){ // bucle hasta n
         string nombreEstudiante = aux->getEstudiante()->getNombre();//constante 1
         long carnetEstudiante = aux->getEstudiante()->getCarnet(); // constante 1
-        listaVacia->insertarLista(nombreEstudiante, carnetEstudiante); //Entra?
+        listaVacia->insertarLista(nombreEstudiante, carnetEstudiante); //constante
         aux = aux->getSiguiente();//constante 1
     }
     cout<<"\n\tSu lista ha sido clonada! :D\n";//constante 1
 }
 
-
 /*
+   T(n) = 1 + 1 + 1 + n(1+1+4+1) + 1
+   T(n) = 4n + 4
+
+   tendiendo al infinito:
+   T(n) = n
+
+   Por tanto, complejidad del metodo clonarLista():
+   O(n) = n
+*/
+
+
+/*  ANALIZANDO O(n) de metodo insertarLista()
+
     void ListaEnlazadaSimple::insertarLista(string nombre, long carnet){
     Estudiante *estudiante = new Estudiante(nombre, carnet); //constante 1
     Nodo *nuevoNodo = new Nodo(estudiante); //constante 1
-    if(this->cabeza==NULL){ //constante 1
+    if(this->cabeza==NULL){ //constante total 2
         //Esta vacia la lista
         this->cabeza=nuevoNodo; //constante 1
         this->fin=nuevoNodo;   //constante 1
-    }else{ //constante 1
+    }else{ //constante total 2
         //Esta con al menos un elemento
         this->fin->setSiguiente(nuevoNodo); //constante 1
         this->fin=nuevoNodo; //constante 1
