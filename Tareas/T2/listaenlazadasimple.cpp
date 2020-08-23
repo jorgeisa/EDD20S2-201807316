@@ -13,7 +13,6 @@ ListaEnlazadaSimple::ListaEnlazadaSimple()
 void ListaEnlazadaSimple::insertarLista(string nombre, long carnet){
     Estudiante *estudiante = new Estudiante(nombre, carnet);
     Nodo *nuevoNodo = new Nodo(estudiante);
-    //Nodo *nuevoNodo = new Nodo(new Estudiante(nombre, carnet));
     if(this->cabeza==NULL){
         //Esta vacia la lista
         this->cabeza=nuevoNodo;
@@ -101,17 +100,36 @@ bool ListaEnlazadaSimple::listaVacia(){
 
 
 //TAREA 2: clonar una lista
+//Calculo de O(n)
 void ListaEnlazadaSimple::clonarLista(ListaEnlazadaSimple *listaVacia){
-    Nodo *aux = this->cabeza;
-    if(aux==NULL){
-        cout<<"Lista vacia!";
-        return;
+    Nodo *aux = this->cabeza; //constante 1
+    if(aux==NULL){  // ?
+        cout<<"Lista vacia!"; //constante 1
+        return; // ?
     }
-    while(aux!=NULL){
-        string nombreEstudiante = aux->getEstudiante()->getNombre();
-        long carnetEstudiante = aux->getEstudiante()->getCarnet();
-        listaVacia->insertarLista(nombreEstudiante, carnetEstudiante);
-        aux = aux->getSiguiente();
+    while(aux!=NULL){ // bucle hasta n
+        string nombreEstudiante = aux->getEstudiante()->getNombre();//constante 1
+        long carnetEstudiante = aux->getEstudiante()->getCarnet(); // constante 1
+        listaVacia->insertarLista(nombreEstudiante, carnetEstudiante); //Entra?
+        aux = aux->getSiguiente();//constante 1
     }
-    cout<<"\n\tSu lista ha sido clonada! :D\n";
+    cout<<"\n\tSu lista ha sido clonada! :D\n";//constante 1
 }
+
+
+/*
+    void ListaEnlazadaSimple::insertarLista(string nombre, long carnet){
+    Estudiante *estudiante = new Estudiante(nombre, carnet); //constante 1
+    Nodo *nuevoNodo = new Nodo(estudiante); //constante 1
+    if(this->cabeza==NULL){ //constante 1
+        //Esta vacia la lista
+        this->cabeza=nuevoNodo; //constante 1
+        this->fin=nuevoNodo;   //constante 1
+    }else{ //constante 1
+        //Esta con al menos un elemento
+        this->fin->setSiguiente(nuevoNodo); //constante 1
+        this->fin=nuevoNodo; //constante 1
+    }
+    this->tamanio++; //constante 1
+    //cout<<"\nSe ha insertado el estudiante correctamente :).\n"<<endl;
+}*/
