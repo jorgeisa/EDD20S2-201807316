@@ -13,23 +13,37 @@ ListaEnlazadaSimple *listaCopia = new ListaEnlazadaSimple();
 
 int main()
 {
+    //201807316 - Jorge Isaac  Xicol Vicente
 
 
     //menu();
+    //Agregamos manualmente los datos a la listaEstudiantes
     listaEstudiantes->insertarLista("Jorge Isaac", 19);
     listaEstudiantes->insertarLista("Manuel Hidalgo", 15);
     listaEstudiantes->insertarLista("Karen Lopez", 30);
     listaEstudiantes->insertarLista("Ana Lucia", 23);
     listaEstudiantes->imprimirLista();
+
+    //Clonamos la lista a la listaCopia y la imprimimos
     listaEstudiantes->clonarLista(listaCopia);
     listaCopia->imprimirLista();
+
+    /*
+      Para comprobar eliminamos un nodo de la listaEstudiantes y
+      la volvemos a imprimir. Ahora solo contendra 3 datos
+    */
     listaEstudiantes->eliminar(19);
     listaEstudiantes->imprimirLista();
+
+    /*Finalmente imprimimos la lista clonada con el dato
+     borrado contenido dentro.
+    */
     listaCopia->imprimirLista();
     getch();
     return 0;
 }
 
+//TAREA 1
 void menu(){
     int opcion;
     string nombre;

@@ -80,7 +80,6 @@ void ListaEnlazadaSimple::eliminar(int carnet){
 }
 
 void ListaEnlazadaSimple::imprimirLista(){
-    cout<<"AQUIII";
     Nodo *temp = this->cabeza;
     if(!this->listaVacia()){
         cout<<"El tamanio de su lista es: "<<this->tamanio<<endl;
